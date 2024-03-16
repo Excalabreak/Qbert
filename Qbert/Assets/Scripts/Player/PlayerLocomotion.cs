@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/07/2024]
+ * Last Updated: [03/16/2024]
  * [Manages movement for player]
  */
 
@@ -13,31 +13,31 @@ public class PlayerLocomotion : MonoBehaviour
 {
     //needed components
     private InputManager _inputManager;
-    private MoveScript _moveScript;
+    private PlayerHopScript _hopScript;
 
     private void Awake()
     {
         _inputManager = GetComponent<InputManager>();
-        _moveScript = GetComponent<MoveScript>();
+        _hopScript = GetComponent<PlayerHopScript>();
     }
 
     public void HandleMove()
     {
         if (_inputManager.verticalInput == 1)
         {
-            _moveScript.Hop(DownEnum.y, DirectionEnum.UpRight);
+            _hopScript.Hop(DirectionEnum.UpRight);
         }
         else if (_inputManager.verticalInput == -1)
         {
-            _moveScript.Hop(DownEnum.y, DirectionEnum.DownLeft);
+            _hopScript.Hop(DirectionEnum.DownLeft);
         }
         else if (_inputManager.horizontalInput == 1)
         {
-            _moveScript.Hop(DownEnum.y, DirectionEnum.DownRight);
+            _hopScript.Hop(DirectionEnum.DownRight);
         }
         else if (_inputManager.horizontalInput == -1)
         {
-            _moveScript.Hop(DownEnum.y, DirectionEnum.UpLeft);
+            _hopScript.Hop(DirectionEnum.UpLeft);
         }
     }
 }

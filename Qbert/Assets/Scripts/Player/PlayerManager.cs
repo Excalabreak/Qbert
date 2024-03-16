@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/07/2024]
+ * Last Updated: [03/16/2024]
  * [Manages player]
  */
 
@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     //needed components
     private InputManager _inputManager;
     private PlayerLocomotion _playerLocomotion;
+    private PlayerHopScript _playerHopScript;
 
     /// <summary>
     /// gets all needed components
@@ -21,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     {
         _inputManager = GetComponent<InputManager>();
         _playerLocomotion = GetComponent<PlayerLocomotion>();
+        _playerHopScript = GetComponent<PlayerHopScript>();
     }
 
     /// <summary>
@@ -30,5 +32,6 @@ public class PlayerManager : MonoBehaviour
     {
         _inputManager.HandleAllInputs();
         _playerLocomotion.HandleMove();
+        _playerHopScript.HandleHop();
     }
 }
