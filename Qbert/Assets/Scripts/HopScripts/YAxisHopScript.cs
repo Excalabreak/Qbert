@@ -57,6 +57,11 @@ public class YAxisHopScript : BaseHopScript
         }
     }
 
+    /// <summary>
+    /// interpolates the jump height differently from x axis
+    /// </summary>
+    /// <param name="u">current u of whole jump</param>
+    /// <param name="jumpHeight">how high from starting position will game object jump</param>
     protected void InterpolateJumpHeight(float u, float jumpHeight)
     {
         if (u <= .5f)
@@ -67,9 +72,9 @@ public class YAxisHopScript : BaseHopScript
         }
         else
         {
-            float jumpU = (u - .5f) / .5f;
-            jumpU = Mathf.Pow(jumpU, 2.5f);
-            _currentPos.y = (1 - jumpU) * (_startPos.y + jumpHeight) + jumpU * _endPos.y;
+            float fallU = (u - .5f) / .5f;
+            fallU = Mathf.Pow(fallU, 2.5f);
+            _currentPos.y = (1 - fallU) * (_startPos.y + jumpHeight) + fallU * _endPos.y;
         }
     }
 
