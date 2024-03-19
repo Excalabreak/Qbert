@@ -15,18 +15,16 @@ public class BaseHopScript : MonoBehaviour
 
     //is the player jumping
     protected bool _isHandlingJump = false;
+    protected bool _frozen = false;
 
     //current direction the player is facing/going
     protected DirectionEnum _currentDirection;
 
-    //variables for interpolation
+    //variables for move
     protected Vector3 _startPos;
-    protected Vector3 _currentPos;
+    protected Vector3 _direction;
     protected Vector3 _endPos;
-    [SerializeField] protected float _timeDuration = 1f;
-    protected bool _startMove = false;
-    protected bool _moving = false;
-    protected float _timeStart;
+    [SerializeField] protected float _speed = 5;
 
     /// <summary>
     /// will set the variables to hop
@@ -41,8 +39,6 @@ public class BaseHopScript : MonoBehaviour
 
             _startPos = transform.position;
             FindEndPos();
-
-            _startMove = true;
             _isHandlingJump = true;
 
         }

@@ -8,7 +8,6 @@ using UnityEngine;
  * [Manages movement for player]
  */
 
-//https://discussions.unity.com/t/use-enum-hidden-value-as-something-other-than-int-c/151369
 public class PlayerLocomotion : MonoBehaviour
 {
     //needed components
