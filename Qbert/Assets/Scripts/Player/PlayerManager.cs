@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     //needed components
     private InputManager _inputManager;
     private PlayerLocomotion _playerLocomotion;
-    private PlayerHopScript _playerHopScript;
+    private BaseHopScript _hopScript;
 
     /// <summary>
     /// gets all needed components
@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     {
         _inputManager = GetComponent<InputManager>();
         _playerLocomotion = GetComponent<PlayerLocomotion>();
-        _playerHopScript = GetComponent<PlayerHopScript>();
+        _hopScript = GetComponent<YAxisHopScript>();
     }
 
     /// <summary>
@@ -32,6 +32,6 @@ public class PlayerManager : MonoBehaviour
     {
         _inputManager.HandleAllInputs();
         _playerLocomotion.HandleMove();
-        _playerHopScript.HandleHop();
+        _hopScript.HandleHop();
     }
 }

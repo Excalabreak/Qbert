@@ -13,12 +13,12 @@ public class PlayerLocomotion : MonoBehaviour
 {
     //needed components
     private InputManager _inputManager;
-    private PlayerHopScript _hopScript;
+    private BaseHopScript _hopScript;
 
     private void Awake()
     {
         _inputManager = GetComponent<InputManager>();
-        _hopScript = GetComponent<PlayerHopScript>();
+        _hopScript = GetComponent<BaseHopScript>();
     }
 
     public void HandleMove()

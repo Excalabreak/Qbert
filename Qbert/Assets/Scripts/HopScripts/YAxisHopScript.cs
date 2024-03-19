@@ -5,13 +5,14 @@ using UnityEngine;
 /*
  * Author: [Lam, Justin]
  * Last Updated: [03/16/2024]
- * [overrides the base hop function so player can move]
+ * [overrides the base hop function so things can hop on the y axis]
  */
 
-public class PlayerHopScript : BaseHopScript
+public class YAxisHopScript : BaseHopScript
 {
     /// <summary>
     /// Handles player hopping motion
+    /// NOTE: make it check for death and adjust numbers aproprietly
     /// </summary>
     public override void HandleHop()
     {
@@ -56,7 +57,7 @@ public class PlayerHopScript : BaseHopScript
         }
     }
 
-    private void InterpolateJumpHeight(float u, float jumpHeight)
+    protected void InterpolateJumpHeight(float u, float jumpHeight)
     {
         if (u <= .5f)
         {
@@ -73,24 +74,28 @@ public class PlayerHopScript : BaseHopScript
     }
 
     /// <summary>
-    /// Rotates Qbert to face move direction
+    /// Rotates Model to face move direction
+    /// maybe need to make it's own script
     /// </summary>
     protected override void RotateFacing()
     {
-        switch (_currentDirection)
+        if (_model != null)
         {
-            case DirectionEnum.UpRight:
-                _model.transform.eulerAngles = new Vector3(0, 270, 0);
-                break;
-            case DirectionEnum.DownRight:
-                _model.transform.eulerAngles = new Vector3(0, 0, 0);
-                break;
-            case DirectionEnum.UpLeft:
-                _model.transform.eulerAngles = new Vector3(0, 180, 0);
-                break;
-            case DirectionEnum.DownLeft:
-                _model.transform.eulerAngles = new Vector3(0, 90, 0);
-                break;
+            switch (_currentDirection)
+            {
+                case DirectionEnum.UpRight:
+                    _model.transform.eulerAngles = new Vector3(0, 270, 0);
+                    break;
+                case DirectionEnum.DownRight:
+                    _model.transform.eulerAngles = new Vector3(0, 0, 0);
+                    break;
+                case DirectionEnum.UpLeft:
+                    _model.transform.eulerAngles = new Vector3(0, 180, 0);
+                    break;
+                case DirectionEnum.DownLeft:
+                    _model.transform.eulerAngles = new Vector3(0, 90, 0);
+                    break;
+            }
         }
     }
 
