@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/16/2024]
+ * Last Updated: [03/18/2024]
  * [overrides the base hop function so things can hop on the y axis]
  */
 
@@ -20,7 +20,6 @@ public class YAxisHopScript : BaseHopScript
         if (_isHandlingJump && !_frozen)
         {
             Vector3 movePos = transform.position + (_direction * _speed * Time.deltaTime);
-            Debug.Log(movePos);
 
             float distanceU;
             float distanceTraveled;

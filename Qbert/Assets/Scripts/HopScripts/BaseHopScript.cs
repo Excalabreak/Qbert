@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/16/2024]
+ * Last Updated: [03/18/2024]
  * [base script for anything that needs to move in this game]
  */
 
@@ -39,6 +39,13 @@ public class BaseHopScript : MonoBehaviour
 
             _startPos = transform.position;
             FindEndPos();
+
+            if (!MapManager.Instance.CheckForLandable(_endPos + Vector3.down))
+            {
+                Debug.Log("Game Over");
+                _endPos.y = -10;
+            }
+
             _isHandlingJump = true;
 
         }
