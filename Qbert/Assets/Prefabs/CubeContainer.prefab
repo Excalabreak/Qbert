@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503437740248289679}
+  - component: {fileID: 7324170569584380226}
+  - component: {fileID: 3833890409073855962}
+  - component: {fileID: 5773626184377402290}
   m_Layer: 0
   m_Name: CubeContainer
   m_TagString: Cube
@@ -32,6 +35,74 @@ Transform:
   - {fileID: 4919471311932253272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7324170569584380226
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074349755333585830}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &3833890409073855962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074349755333585830}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &5773626184377402290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074349755333585830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414ac8d76d44bc7409b0a8ed490e95d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _topMats:
+  - {fileID: 2100000, guid: 4fb332321d3b7224788c7c63d27e7829, type: 2}
+  - {fileID: 2100000, guid: f8ee8d5cc6ea47b48803c9cf80e7cc58, type: 2}
+  - {fileID: 2100000, guid: 0086c5b0dde9ca244984ca7629d21af4, type: 2}
+  _topRenderer: {fileID: 8335153603616556619}
+  _currentTopState: 0
+  _goalTopState: 1
+  _canChangeGoalState: 0
 --- !u!1001 &1686501569918165230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +174,12 @@ PrefabInstance:
 --- !u!4 &4919471311932253272 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5990580432447341750, guid: e27a908044c54dc45864a7c95c3ae11f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1686501569918165230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8335153603616556619 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7263112354672256677, guid: e27a908044c54dc45864a7c95c3ae11f,
     type: 3}
   m_PrefabInstance: {fileID: 1686501569918165230}
   m_PrefabAsset: {fileID: 0}

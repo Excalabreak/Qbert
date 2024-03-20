@@ -33,10 +33,11 @@ public class MapManager : Singleton<MapManager>
     /// <returns>returns true if there is a space for game object to land</returns>
     public bool CheckForLandable(Vector3 space)
     {
-        if (_mapLandables.ContainsKey(space))
-        {
-            return true;
-        }
-        return false;
+        return _mapLandables.ContainsKey(space);
+    }
+
+    public bool CheckForCube(Vector3 space)
+    {
+        return (_mapLandables.ContainsKey(space) && _mapLandables[space].tag == "Cube");
     }
 }

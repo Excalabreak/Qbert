@@ -10,8 +10,10 @@ using UnityEngine;
 
 public class YAxisHopScript : BaseHopScript
 {
+    [SerializeField] private PlayerSpawnScript playerSpawnScript;
+
     /// <summary>
-    /// Handles player hopping motion
+    /// Handles hopping motion
     /// TODO: make it check for death and adjust numbers aproprietly
     /// TODO: needs to be able to freeze
     /// </summary>
@@ -40,6 +42,13 @@ public class YAxisHopScript : BaseHopScript
             {
                 transform.position = _endPos;
                 _isHandlingJump = false;
+                if (playerSpawnScript != null)
+                {
+                    if (playerSpawnScript.justSpawned)
+                    {
+                        playerSpawnScript.FirstJump();
+                    }
+                }
                 return;
             }
 
