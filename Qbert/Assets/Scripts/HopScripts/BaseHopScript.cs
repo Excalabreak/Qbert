@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/18/2024]
+ * Last Updated: [03/21/2024]
  * [base script for anything that needs to move in this game]
  */
 
@@ -26,13 +26,16 @@ public class BaseHopScript : MonoBehaviour
     protected Vector3 _endPos;
     [SerializeField] protected float _speed = 5;
 
+    //var for on disc
+    protected bool _onDisc = false;
+
     /// <summary>
     /// will set the variables to hop
     /// </summary>
     /// <param name="direction"></param>
     public void Hop(DirectionEnum direction)
     {
-        if (!_isHandlingJump)
+        if (!_isHandlingJump || !_onDisc)
         {
             _currentDirection = direction;
             RotateFacing();
@@ -43,13 +46,26 @@ public class BaseHopScript : MonoBehaviour
             if (!MapManager.Instance.CheckForLandable(_endPos + Vector3.down))
             {
                 Debug.Log("Game Over");
-                _endPos.y = -10;
+                _endPos.y = -20;
+            }
+            else if (!MapManager.Instance.CheckForCube(_endPos))
+            {
+                _onDisc = true;
             }
 
             _isHandlingJump = true;
 
         }
     }
+
+    /// <summary>
+    /// called when the dic has returned player to the top
+    /// </summary>
+    public void CompleteDiscRide()
+    {
+        _onDisc = false;
+    }
+
     /// <summary>
     /// called in update to move player when hopping
     /// </summary>
@@ -72,5 +88,17 @@ public class BaseHopScript : MonoBehaviour
     protected virtual void FindEndPos()
     {
 
+    }
+
+    //properties to get variables
+
+    public bool isHandlingJump
+    {
+        get { return _isHandlingJump; }
+    }
+
+    public bool onDisc
+    {
+        get { return _onDisc; }
     }
 }
