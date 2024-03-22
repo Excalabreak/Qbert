@@ -32,7 +32,7 @@ public class BaseHopScript : MonoBehaviour
     /// <summary>
     /// will set the variables to hop
     /// </summary>
-    /// <param name="direction"></param>
+    /// <param name="direction">direction enum of which direction to jump</param>
     public void Hop(DirectionEnum direction)
     {
         if (!_isHandlingJump || !_onDisc)
@@ -45,7 +45,7 @@ public class BaseHopScript : MonoBehaviour
 
             if (!MapManager.Instance.CheckForLandable(_endPos + Vector3.down))
             {
-                Debug.Log("Game Over");
+                Debug.Log(gameObject.name + "Fell Off");
                 _endPos.y = -20;
             }
             else if (!MapManager.Instance.CheckForCube(_endPos))
@@ -54,7 +54,6 @@ public class BaseHopScript : MonoBehaviour
             }
 
             _isHandlingJump = true;
-
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 /*
  * Author: [Lam, Justin]
  * Last Updated: [03/21/2024]
- * [Script for when qbert lands on dixc]
+ * [Script for when qbert lands on disc]
  */
 
 public class DiscScript : MonoBehaviour
