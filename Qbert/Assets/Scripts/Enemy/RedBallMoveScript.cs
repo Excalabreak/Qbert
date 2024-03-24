@@ -14,10 +14,11 @@ public class RedBallMoveScript : MonoBehaviour
 
     private bool _firstDrop = true;
     [SerializeField] private float _speed = 1.75f;
-
-    private Vector3 _spawnLoc;
     private Vector3 _firstDropEndLoc;
 
+    /// <summary>
+    /// on awake, spawn ball at random location
+    /// </summary>
     private void Awake()
     {
         _hopScript = gameObject.GetComponent<BaseHopScript>();
@@ -26,7 +27,6 @@ public class RedBallMoveScript : MonoBehaviour
         if (randomSpawn == 0)
         {
             transform.position = new Vector3(-1, 3, 0);
-            _spawnLoc = transform.position;
             _firstDropEndLoc = transform.position;
             _firstDropEndLoc.y = 0;
         }
@@ -38,6 +38,10 @@ public class RedBallMoveScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// in update, drop the ball from spawn.
+    /// after, have ball randomly go down the map
+    /// </summary>
     private void Update()
     {
         if (_firstDrop)

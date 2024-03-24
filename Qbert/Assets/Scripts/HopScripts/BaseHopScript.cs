@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/21/2024]
+ * Last Updated: [03/23/2024]
  * [base script for anything that needs to move in this game]
  */
 
@@ -24,7 +24,7 @@ public class BaseHopScript : MonoBehaviour
     protected Vector3 _startPos;
     protected Vector3 _direction;
     protected Vector3 _endPos;
-    [SerializeField] protected float _speed = 5;
+    [SerializeField] protected float _speed = 1.4f;
 
     //var for on disc
     protected bool _onDisc = false;
@@ -45,7 +45,6 @@ public class BaseHopScript : MonoBehaviour
 
             if (!MapManager.Instance.CheckForLandable(_endPos + Vector3.down))
             {
-                Debug.Log(gameObject.name + "Fell Off");
                 _endPos.y = -20;
             }
             else if (!MapManager.Instance.CheckForCube(_endPos))
@@ -87,6 +86,24 @@ public class BaseHopScript : MonoBehaviour
     protected virtual void FindEndPos()
     {
 
+    }
+
+    /// <summary>
+    /// changes speed through code
+    /// </summary>
+    /// <param name="speed">new speed float</param>
+    public void ChangeSpeed(float speed)
+    {
+        _speed = speed;
+    }
+
+    /// <summary>
+    /// changes model through code
+    /// </summary>
+    /// <param name="model">game object with model</param>
+    public void ChangeModel(GameObject model)
+    {
+        _model = model;
     }
 
     //properties to get variables
