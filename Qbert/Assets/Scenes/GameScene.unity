@@ -628,6 +628,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnakeContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 4989935637985391920, guid: 03cb6648c941e8542916cd52ef490b0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1853,6 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76688414c9fb5bb4e913186113ccbafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerLastLocation: {x: 0, y: 0, z: 0}
 --- !u!4 &1302246344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 503437740248289679, guid: 5a34fab9ba5edfd4f96f2f58a653870e,

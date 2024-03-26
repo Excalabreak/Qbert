@@ -4,13 +4,19 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/19/2024]
+ * Last Updated: [03/25/2024]
  * [Singleton that holds information about the map and cubes]
  */
 
 public class MapManager : Singleton<MapManager>
 {
     private Dictionary<Vector3, GameObject> _mapLandables = new Dictionary<Vector3, GameObject>();
+    public Vector3 _playerLastLocation;
+
+    //TODO: place in game manager
+    //make map spawn
+    //make map get child
+    //make disc removed from list when used
 
     /// <summary>
     /// On Enabled, adds all child cubes and disc into _mapCubes dictionary
@@ -23,6 +29,20 @@ public class MapManager : Singleton<MapManager>
             {
                 _mapLandables.Add(child.position, child.gameObject);
             }
+        }
+    }
+
+    public void UpdatePlayerLastLocation(Vector3 loc)
+    {
+        _playerLastLocation = loc;
+    }
+
+    public void RemoveLandable(Vector3 landable)
+    {
+        GameObject temp;
+        if (_mapLandables.TryGetValue(landable, out temp))
+        {
+            _mapLandables.Remove(landable);
         }
     }
 
@@ -39,5 +59,10 @@ public class MapManager : Singleton<MapManager>
     public bool CheckForCube(Vector3 space)
     {
         return (_mapLandables.ContainsKey(space) && _mapLandables[space].tag == "Cube");
+    }
+
+    public Vector3 playerLastLocation
+    {
+        get { return _playerLastLocation; }
     }
 }

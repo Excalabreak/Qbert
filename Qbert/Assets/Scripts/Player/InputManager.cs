@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/07/2024]
+ * Last Updated: [03/25/2024]
  * [Manages all inputs from new input system]
  */
 

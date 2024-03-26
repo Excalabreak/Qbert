@@ -52,7 +52,9 @@ public class DiscScript : MonoBehaviour
             if (_atEndPos)
             {
                 _playerGameObject.transform.parent = null;
-                _playerGameObject.transform.position = _playerGameObject.GetComponent<PlayerSpawnScript>().spawnLoc;
+                Vector3 returnPos = _playerGameObject.GetComponent<PlayerSpawnScript>().spawnLoc;
+                _playerGameObject.transform.position = returnPos;
+                MapManager.Instance.UpdatePlayerLastLocation(returnPos);
                 playerHopScript.CompleteDiscRide();
                 Destroy(gameObject);
             }
@@ -69,6 +71,7 @@ public class DiscScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             _playerGameObject = other.gameObject;
+            MapManager.Instance.RemoveLandable(transform.position);
         }
     }
 }

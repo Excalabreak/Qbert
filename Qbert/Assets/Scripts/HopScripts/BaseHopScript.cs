@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/23/2024]
+ * Last Updated: [03/25/2024]
  * [base script for anything that needs to move in this game]
  */
 
@@ -35,7 +35,7 @@ public class BaseHopScript : MonoBehaviour
     /// <param name="direction">direction enum of which direction to jump</param>
     public void Hop(DirectionEnum direction)
     {
-        if (!_isHandlingJump || !_onDisc)
+        if (!_isHandlingJump && !_onDisc)
         {
             _currentDirection = direction;
             RotateFacing();
@@ -43,13 +43,28 @@ public class BaseHopScript : MonoBehaviour
             _startPos = transform.position;
             FindEndPos();
 
+            Debug.Log(_isHandlingJump);
+            Debug.Log(_endPos);
+
             if (!MapManager.Instance.CheckForLandable(_endPos + Vector3.down))
             {
                 _endPos.y = -20;
             }
-            else if (!MapManager.Instance.CheckForCube(_endPos))
+            else if (!MapManager.Instance.CheckForCube(_endPos + Vector3.down))
             {
-                _onDisc = true;
+                if (gameObject.tag == "Player")
+                {
+                    _onDisc = true;
+                }
+                else
+                {
+                    _endPos.y = -20;
+                }
+            }
+
+            if (gameObject.tag == "Player")
+            {
+                MapManager.Instance.UpdatePlayerLastLocation(_endPos);
             }
 
             _isHandlingJump = true;
