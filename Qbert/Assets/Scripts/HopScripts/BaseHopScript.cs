@@ -43,9 +43,6 @@ public class BaseHopScript : MonoBehaviour
             _startPos = transform.position;
             FindEndPos();
 
-            Debug.Log(_isHandlingJump);
-            Debug.Log(_endPos);
-
             if (!MapManager.Instance.CheckForLandable(_endPos + Vector3.down))
             {
                 _endPos.y = -20;
