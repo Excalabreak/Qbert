@@ -42,9 +42,9 @@ public class HatchedState : MonoBehaviour, ISnakeState
     private void JumpTwoardsPlayer()
     {
         Vector3 playerLoc = MapManager.Instance.playerLastLocation;
-        if (playerLoc.y >= transform.position.y)
+        if (playerLoc.y > transform.position.y)
         {
-            if (playerLoc.x - playerLoc.z >= transform.position.x - transform.position.z)
+            if (playerLoc.x - playerLoc.z > transform.position.x - transform.position.z)
             {
                 _snakeMoveScript.hopScript.Hop(DirectionEnum.UpRight);
             }
@@ -55,7 +55,7 @@ public class HatchedState : MonoBehaviour, ISnakeState
         }
         else
         {
-            if (playerLoc.x - playerLoc.z >= transform.position.x - transform.position.z)
+            if (playerLoc.x - playerLoc.z > transform.position.x - transform.position.z)
             {
                 _snakeMoveScript.hopScript.Hop(DirectionEnum.DownRight);
             }

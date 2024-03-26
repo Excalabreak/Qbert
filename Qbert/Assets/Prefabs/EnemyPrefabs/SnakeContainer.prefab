@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8541030834768062776}
   - component: {fileID: 3411699879285452268}
   - component: {fileID: 1251194751812315472}
+  - component: {fileID: 2926769957526959900}
+  - component: {fileID: 2595679669119283759}
   m_Layer: 0
   m_Name: SnakeContainer
   m_TagString: Untagged
@@ -140,6 +142,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c69fdb9dbc6d9646b9243dd5390dceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chargeTime: 0.75
+--- !u!114 &2926769957526959900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4989935637985391920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7434c0a7f04b442b5bcd38ff2a7055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _depthLimits: {x: -19, y: -19, z: -19}
+--- !u!114 &2595679669119283759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4989935637985391920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447debfa77b8768408d1550d5b9d17cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1320268774746825339

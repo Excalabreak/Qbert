@@ -25,7 +25,7 @@ public class CheckEntityFallOff : MonoBehaviour
     {
         if (transform.position.x < _depthLimits.x || transform.position.y < _depthLimits.y || transform.position.z < _depthLimits.z)
         {
-            _deathScript.OnDeath();
+            _deathScript.OnFallDeath();
         }
     }
 }

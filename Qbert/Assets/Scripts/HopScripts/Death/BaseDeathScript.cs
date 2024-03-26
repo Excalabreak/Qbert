@@ -14,7 +14,7 @@ public class BaseDeathScript : MonoBehaviour
     /// when called, destroy this gameobjcet
     /// (can be used as is or overriden to do more)
     /// </summary>
-    public virtual void OnDeath()
+    public virtual void OnFallDeath()
     {
         Destroy(gameObject);
     }
