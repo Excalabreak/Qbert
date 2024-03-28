@@ -20,6 +20,9 @@ public class DiscScript : MonoBehaviour
 
     private GameObject _playerGameObject;
 
+    /// <summary>
+    /// on awake get direction and spawn position
+    /// </summary>
     private void Awake()
     {
         _direction = _endPos - transform.position;
@@ -27,6 +30,12 @@ public class DiscScript : MonoBehaviour
         _spawnPos = transform.position;
     }
 
+    /// <summary>
+    /// in update,
+    /// when player is on disc,
+    /// move player to spawn location until it is at top
+    /// then place player on spawn pos and destroy disc
+    /// </summary>
     private void Update()
     {
         if (_playerGameObject != null)
