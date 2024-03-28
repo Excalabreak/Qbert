@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/21/2024]
+ * Last Updated: [03/28/2024]
  * [Script for when qbert lands on disc]
  */
 
@@ -13,6 +13,7 @@ public class DiscScript : MonoBehaviour
     [SerializeField] private float _speed = 3f;
 
     private Vector3 _endPos = new Vector3(1, 1, 1);
+    private Vector3 _spawnPos;
     public Vector3 _direction;
 
     private bool _atEndPos = false;
@@ -23,6 +24,7 @@ public class DiscScript : MonoBehaviour
     {
         _direction = _endPos - transform.position;
         Vector3.Normalize(_direction);
+        _spawnPos = transform.position;
     }
 
     private void Update()
@@ -56,7 +58,7 @@ public class DiscScript : MonoBehaviour
                 _playerGameObject.transform.position = returnPos;
                 MapManager.Instance.UpdatePlayerLastLocation(returnPos);
                 playerHopScript.CompleteDiscRide();
-                Destroy(gameObject);
+                MapManager.Instance.RemoveLandable(_spawnPos);
             }
         }
     }
@@ -71,7 +73,6 @@ public class DiscScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             _playerGameObject = other.gameObject;
-            MapManager.Instance.RemoveLandable(transform.position);
         }
     }
 }

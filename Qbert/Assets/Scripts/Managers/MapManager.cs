@@ -76,6 +76,7 @@ public class MapManager : Singleton<MapManager>
                 spawnLoc = new Vector3(1, fRow + 1, fRow);
                 disc = Instantiate(_discPrefab, spawnLoc, Quaternion.identity);
             }
+            disc.transform.parent = _currentMap.transform;
             _mapLandables.Add(spawnLoc, disc);
         }
         
@@ -86,11 +87,17 @@ public class MapManager : Singleton<MapManager>
         _playerLastLocation = loc;
     }
 
+    /// <summary>
+    /// destroys and removes the map landable by the SPAWNED position key
+    /// </summary>
+    /// <param name="landable">KEY of landable</param>
     public void RemoveLandable(Vector3 landable)
     {
         GameObject temp;
         if (_mapLandables.TryGetValue(landable, out temp))
         {
+            Debug.Log(temp);
+            Destroy(temp);
             _mapLandables.Remove(landable);
         }
     }
