@@ -4,32 +4,81 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/25/2024]
+ * Last Updated: [03/28/2024]
  * [Singleton that holds information about the map and cubes]
  */
 
 public class MapManager : Singleton<MapManager>
 {
     private Dictionary<Vector3, GameObject> _mapLandables = new Dictionary<Vector3, GameObject>();
-    public Vector3 _playerLastLocation;
+    private Vector3 _playerLastLocation;
+
+    [SerializeField] private GameObject _mapPrefab;
+    [SerializeField] private GameObject _discPrefab;
+    private GameObject _currentMap;
 
     //TODO: place in game manager
     //make map spawn
     //make map get child
-    //make disc removed from list when used
 
     /// <summary>
     /// On Enabled, adds all child cubes and disc into _mapCubes dictionary
     /// </summary>
     private void OnEnable()
     {
-        foreach (Transform child in transform)
+        //line for testing, remove after
+        MakeMap();
+        
+    }
+
+    /// <summary>
+    /// instantiates map from _mapPrefab
+    /// </summary>
+    private void MakeMap()
+    {
+        _currentMap = Instantiate(_mapPrefab, Vector3.zero, Quaternion.identity);
+
+        foreach (Transform child in _currentMap.transform)
         {
             if (child.gameObject.tag == "Cube" || child.gameObject.tag == "Disc")
             {
                 _mapLandables.Add(child.position, child.gameObject);
             }
         }
+
+        SpawnDisc(true, 4);
+        SpawnDisc(false, 4);
+    }
+
+    /// <summary>
+    /// spawns disc based on parameters
+    /// </summary>
+    /// <param name="onLeftSide">is the disc spawning on the left</param>
+    /// <param name="row">row in which the disc spawns</param>
+    private void SpawnDisc(bool onLeftSide, int row)
+    {
+        if (row < 0 || row > 6)
+        {
+            Debug.Log("cant spawn on row " + row);
+        }
+        else
+        {
+            float fRow = (float)row * -1;
+            Vector3 spawnLoc;
+            GameObject disc;
+            if (onLeftSide)
+            {
+                spawnLoc = new Vector3(fRow, fRow+1, 1);
+                disc = Instantiate(_discPrefab, spawnLoc, Quaternion.identity);
+            }
+            else
+            {
+                spawnLoc = new Vector3(1, fRow + 1, fRow);
+                disc = Instantiate(_discPrefab, spawnLoc, Quaternion.identity);
+            }
+            _mapLandables.Add(spawnLoc, disc);
+        }
+        
     }
 
     public void UpdatePlayerLastLocation(Vector3 loc)
