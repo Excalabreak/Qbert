@@ -64,7 +64,7 @@ public class DiscScript : MonoBehaviour
     }
 
     /// <summary>
-    /// on trigger stay,
+    /// on trigger enter,
     /// sets the player gameobject to start
     /// </summary>
     /// <param name="other"></param>
