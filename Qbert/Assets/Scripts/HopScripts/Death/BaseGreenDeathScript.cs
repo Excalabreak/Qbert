@@ -10,10 +10,16 @@ using UnityEngine;
 
 public class BaseGreenDeathScript : BaseDeathScript
 {
-    [SerializeField] private int _points = 100;
+    [SerializeField] private bool _isBall = false;
+    [SerializeField] private int _points = 300;
 
     protected virtual void OnContactDeath()
     {
+        if (_isBall)
+        {
+            //freeze enemies
+        }
+        //add points
         Destroy(this.gameObject);
     }
 
@@ -21,7 +27,6 @@ public class BaseGreenDeathScript : BaseDeathScript
     {
         if (other.gameObject.tag == "Player")
         {
-            //freeze all enemies
             OnContactDeath();
         }
     }
