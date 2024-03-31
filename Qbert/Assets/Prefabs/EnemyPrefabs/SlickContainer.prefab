@@ -9,8 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4646006320240128359}
+  - component: {fileID: 9135510344167927683}
+  - component: {fileID: -3011772049710992035}
   - component: {fileID: 807021872054073878}
   - component: {fileID: 5754126835825355752}
+  - component: {fileID: -3225464431031619875}
+  - component: {fileID: -5799381225513718912}
   m_Layer: 0
   m_Name: SlickContainer
   m_TagString: SamSlick
@@ -34,6 +38,56 @@ Transform:
   - {fileID: 2798093348986018121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &9135510344167927683
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311784356147506113}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-3011772049710992035
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311784356147506113}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &807021872054073878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+  _chargeTime: 0.5
 --- !u!114 &5754126835825355752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +117,32 @@ MonoBehaviour:
   _model: {fileID: 2100330422928676209}
   _speed: 1.1
   playerSpawnScript: {fileID: 0}
+--- !u!114 &-3225464431031619875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311784356147506113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7434c0a7f04b442b5bcd38ff2a7055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _depthLimits: {x: -19, y: -19, z: -19}
+--- !u!114 &-5799381225513718912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311784356147506113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9f39074f26468498f37df4bdd0692b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _points: 100
 --- !u!1001 &6364626615949601877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 9117362884871845148, guid: cfc71accbcd2473468c616144face059,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9117362884871845148, guid: cfc71accbcd2473468c616144face059,
         type: 3}

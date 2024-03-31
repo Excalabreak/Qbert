@@ -105,5 +105,9 @@ public class CubeScript : MonoBehaviour
                 NextTopState();
             }
         }
+        if (other.gameObject.tag == "SamSlick")
+        {
+            RevertTopState();
+        }
     }
 }
