@@ -10,7 +10,9 @@ public class EggState : MonoBehaviour, ISnakeState
     private float _speed = 3f;
     private Vector3 _firstDropEndLoc;
 
-    
+    [SerializeField] private float _chargeTime = 1f;
+    private bool _isChargingJump = false;
+
     /// <summary>
     /// on Handle, spawn egg at random location
     /// </summary>
@@ -67,17 +69,9 @@ public class EggState : MonoBehaviour, ISnakeState
                     {
                         _snakeMoveScript.Hatch();
                     }
-                    else
+                    else if (!_isChargingJump)
                     {
-                        int randomDir = Random.Range(0, 2);
-                        if (randomDir == 0)
-                        {
-                            _snakeMoveScript.hopScript.Hop(DirectionEnum.DownLeft);
-                        }
-                        else
-                        {
-                            _snakeMoveScript.hopScript.Hop(DirectionEnum.DownRight);
-                        }
+                        StartCoroutine(ChargeJump());
                     }
                 }
                 else
@@ -86,5 +80,33 @@ public class EggState : MonoBehaviour, ISnakeState
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// jumps a random direction down
+    /// </summary>
+    private void Jump()
+    {
+        int randomDir = Random.Range(0, 2);
+        if (randomDir == 0)
+        {
+            _snakeMoveScript.hopScript.Hop(DirectionEnum.DownLeft);
+        }
+        else
+        {
+            _snakeMoveScript.hopScript.Hop(DirectionEnum.DownRight);
+        }
+    }
+
+    /// <summary>
+    /// waits to jump before jumping
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ChargeJump()
+    {
+        _isChargingJump = true;
+        yield return new WaitForSeconds(_chargeTime);
+        Jump();
+        _isChargingJump = false;
     }
 }

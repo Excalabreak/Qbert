@@ -9,6 +9,10 @@ public class HatchedState : MonoBehaviour, ISnakeState
     [SerializeField] private float _chargeTime = 1f;
     private bool _isChargingJump = false;
 
+    /// <summary>
+    /// sets _snakeMoveScript that starts this state
+    /// </summary>
+    /// <param name="snakeMoveScript"></param>
     public void Handle(SnakeMoveScript snakeMoveScript)
     {
         if (!_snakeMoveScript)
@@ -17,6 +21,9 @@ public class HatchedState : MonoBehaviour, ISnakeState
         }
     }
 
+    /// <summary>
+    /// calls to handle jump or charge a jump depending on bools
+    /// </summary>
     private void Update()
     {
         if (_snakeMoveScript && !_snakeMoveScript.inEggState)
@@ -32,13 +39,12 @@ public class HatchedState : MonoBehaviour, ISnakeState
             {
                 _snakeMoveScript.hopScript.HandleHop();
             }
-            //if not jumping
-            //call coroutine to jump
-            //
-            //else handle jump
         }
     }
 
+    /// <summary>
+    /// gets the players last location and jumps twoards the player
+    /// </summary>
     private void JumpTwoardsPlayer()
     {
         Vector3 playerLoc = MapManager.Instance.playerLastLocation;
@@ -66,6 +72,10 @@ public class HatchedState : MonoBehaviour, ISnakeState
         }
     }
 
+    /// <summary>
+    /// waits to jump before jumping
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ChargeJump()
     {
         _isChargingJump = true;

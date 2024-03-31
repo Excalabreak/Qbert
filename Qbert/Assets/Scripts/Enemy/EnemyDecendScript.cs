@@ -4,17 +4,20 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/21/2024]
- * [Script for handling red ball's movement]
+ * Last Updated: [03/31/2024]
+ * [Script for enemies to decend down the map]
  */
 
-public class RedBallMoveScript : MonoBehaviour
+public class EnemyDecendScript : MonoBehaviour
 {
     private BaseHopScript _hopScript;
 
     private bool _firstDrop = true;
-    [SerializeField] private float _speed = 1.75f;
+    [SerializeField] private float _speed = 3f;
     private Vector3 _firstDropEndLoc;
+
+    [SerializeField] private float _chargeTime = 1f;
+    private bool _isChargingJump = false;
 
     /// <summary>
     /// on awake, spawn ball at random location
@@ -61,14 +64,9 @@ public class RedBallMoveScript : MonoBehaviour
         {
             if (!_hopScript.isHandlingJump)
             {
-                int randomDir = Random.Range(0, 2);
-                if (randomDir == 0)
+                if (!_isChargingJump)
                 {
-                    _hopScript.Hop(DirectionEnum.DownLeft);
-                }
-                else
-                {
-                    _hopScript.Hop(DirectionEnum.DownRight);
+                    StartCoroutine(ChargeJump());
                 }
             }
             else
@@ -76,5 +74,33 @@ public class RedBallMoveScript : MonoBehaviour
                 _hopScript.HandleHop();
             }
         }
+    }
+
+    /// <summary>
+    /// jumps a random direction down
+    /// </summary>
+    private void Jump()
+    {
+        int randomDir = Random.Range(0, 2);
+        if (randomDir == 0)
+        {
+            _hopScript.Hop(DirectionEnum.DownLeft);
+        }
+        else
+        {
+            _hopScript.Hop(DirectionEnum.DownRight);
+        }
+    }
+
+    /// <summary>
+    /// waits to jump before jumping
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ChargeJump()
+    {
+        _isChargingJump = true;
+        yield return new WaitForSeconds(_chargeTime);
+        Jump();
+        _isChargingJump = false;
     }
 }

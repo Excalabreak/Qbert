@@ -7,6 +7,7 @@ TagManager:
   - Cube
   - Disc
   - Enemy
+  - SamSlick
   layers:
   - Default
   - TransparentFX
