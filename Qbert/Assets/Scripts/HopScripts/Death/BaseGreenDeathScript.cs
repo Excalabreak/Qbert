@@ -11,7 +11,6 @@ using UnityEngine;
 public class BaseGreenDeathScript : BaseDeathScript
 {
     [SerializeField] private bool _isBall = false;
-    [SerializeField] private int _points = 300;
 
     protected virtual void OnContactDeath()
     {

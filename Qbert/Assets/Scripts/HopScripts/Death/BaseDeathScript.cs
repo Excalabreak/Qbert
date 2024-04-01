@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class BaseDeathScript : MonoBehaviour
 {
+    [SerializeField] protected int _points = 100;
+
     /// <summary>
     /// when called, destroy this gameobjcet
     /// (can be used as is or overriden to do more)
