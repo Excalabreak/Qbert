@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/23/2024]
+ * Last Updated: [03/31/2024]
  * [Script that can be overriden to call for death]
  */
 
