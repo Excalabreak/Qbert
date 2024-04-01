@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/25/2024]
+ * Last Updated: [03/31/2024]
  * [base script for anything that needs to move in this game]
  */
 
@@ -55,6 +55,87 @@ public class BaseHopScript : MonoBehaviour
                 }
                 else
                 {
+                    _endPos.y = -20;
+                }
+            }
+
+            if (gameObject.tag == "Player")
+            {
+                MapManager.Instance.UpdatePlayerLastLocation(_endPos);
+            }
+
+            _isHandlingJump = true;
+        }
+    }
+
+    /// <summary>
+    /// will set the variables to hop
+    /// </summary>
+    /// <param name="direction">direction enum of which direction to jump</param>
+    /// <param name="down">axis to check</param>
+    public void Hop(DirectionEnum direction, DownEnum down)
+    {
+        if (!_isHandlingJump && !_onDisc)
+        {
+            _currentDirection = direction;
+            RotateFacing();
+
+            _startPos = transform.position;
+            FindEndPos();
+
+            Vector3 axisDown;
+            switch (down)
+            {
+                case DownEnum.y:
+                    axisDown = Vector3.down;
+                    break;
+                case DownEnum.x:
+                    axisDown = Vector3.right;
+                    break;
+                case DownEnum.z:
+                    axisDown = Vector3.forward;
+                    break;
+                default:
+                    axisDown = Vector3.down;
+                    break;
+            }
+
+            if (!MapManager.Instance.CheckForLandable(_endPos + axisDown))
+            {
+                switch (down)
+                {
+                    case DownEnum.y:
+                        _endPos.y = -20;
+                        break;
+                    case DownEnum.x:
+                        _endPos.x = 20;
+                        break;
+                    case DownEnum.z:
+                        _endPos.z = 20;
+                        break;
+                }
+            }
+            else if (!MapManager.Instance.CheckForCube(_endPos + axisDown))
+            {
+                if (gameObject.tag == "Player")
+                {
+                    _onDisc = true;
+                }
+                else
+                {
+                    switch (down)
+                    {
+                        case DownEnum.y:
+                            _endPos.y = -20;
+                            break;
+                        case DownEnum.x:
+                            _endPos.x = 20;
+                            break;
+                        case DownEnum.z:
+                            _endPos.z = 20;
+                            break;
+                    }
+
                     _endPos.y = -20;
                 }
             }

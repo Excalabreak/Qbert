@@ -10,7 +10,9 @@ using UnityEngine;
 
 public class CheckEntityFallOff : MonoBehaviour
 {
-    [SerializeField] private Vector3 _depthLimits = new Vector3(-19f, -19f, -19f);
+    [SerializeField] private float _limitValue = -19;
+    [SerializeField] private bool _entityIsLessToDespawn = true;
+    [SerializeField] private DownEnum _axis = DownEnum.y;
     private BaseDeathScript _deathScript;
 
     private void Awake()
@@ -23,9 +25,53 @@ public class CheckEntityFallOff : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (transform.position.x < _depthLimits.x || transform.position.y < _depthLimits.y || transform.position.z < _depthLimits.z)
+        if (_entityIsLessToDespawn)
         {
-            _deathScript.OnFallDeath();
+            switch (_axis)
+            {
+                case DownEnum.y:
+                    if (transform.position.y <= _limitValue)
+                    {
+                        _deathScript.OnFallDeath();
+                    }
+                    break;
+                case DownEnum.x:
+                    if (transform.position.x <= _limitValue)
+                    {
+                        _deathScript.OnFallDeath();
+                    }
+                    break;
+                case DownEnum.z:
+                    if (transform.position.z <= _limitValue)
+                    {
+                        _deathScript.OnFallDeath();
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            switch (_axis)
+            {
+                case DownEnum.y:
+                    if (transform.position.y >= _limitValue)
+                    {
+                        _deathScript.OnFallDeath();
+                    }
+                    break;
+                case DownEnum.x:
+                    if (transform.position.x >= _limitValue)
+                    {
+                        _deathScript.OnFallDeath();
+                    }
+                    break;
+                case DownEnum.z:
+                    if (transform.position.z >= _limitValue)
+                    {
+                        _deathScript.OnFallDeath();
+                    }
+                    break;
+            }
         }
     }
 }
