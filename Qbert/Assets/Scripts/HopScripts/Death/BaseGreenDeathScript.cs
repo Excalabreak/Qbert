@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/31/2024]
+ * Last Updated: [04/01/2024]
  * [Base script for green enemies]
  */
 
@@ -16,10 +16,10 @@ public class BaseGreenDeathScript : BaseDeathScript
     {
         if (_isBall)
         {
-            //freeze enemies
+            EnemyManager.Instance.FreezeAllEnemies();
         }
         //add points
-        Destroy(this.gameObject);
+        EnemyManager.Instance.RemoveEnemy(gameObject);
     }
 
     protected void OnTriggerEnter(Collider other)

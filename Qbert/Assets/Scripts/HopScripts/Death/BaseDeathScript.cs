@@ -5,7 +5,7 @@ using UnityEngine;
 /*
  * Author: [Lam, Justin]
  * Last Updated: [03/31/2024]
- * [Script that can be overriden to call for death]
+ * [Script that can be overriden to call for death for enemies]
  */
 
 public class BaseDeathScript : MonoBehaviour
@@ -18,6 +18,6 @@ public class BaseDeathScript : MonoBehaviour
     /// </summary>
     public virtual void OnFallDeath()
     {
-        Destroy(gameObject);
+        EnemyManager.Instance.RemoveEnemy(gameObject);
     }
 }

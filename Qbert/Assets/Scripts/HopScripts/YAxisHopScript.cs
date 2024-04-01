@@ -19,6 +19,7 @@ public class YAxisHopScript : BaseHopScript
     /// </summary>
     public override void HandleHop()
     {
+        //Debug.Log(gameObject.name + " " + _frozen);
         if (_isHandlingJump && !_frozen)
         {
             Vector3 movePos = transform.position + (_direction * _speed * Time.deltaTime);

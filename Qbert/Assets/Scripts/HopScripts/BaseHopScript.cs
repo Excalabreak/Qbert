@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/31/2024]
+ * Last Updated: [04/01/2024]
  * [base script for anything that needs to move in this game]
  */
 
@@ -209,5 +209,11 @@ public class BaseHopScript : MonoBehaviour
     public bool onDisc
     {
         get { return _onDisc; }
+    }
+
+    public bool frozen
+    {
+        get { return _frozen; }
+        set { _frozen = value; }
     }
 }
