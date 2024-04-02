@@ -17,24 +17,13 @@ public class MapManager : Singleton<MapManager>
     [SerializeField] private GameObject _discPrefab;
     private GameObject _currentMap;
 
-    //TODO: place in game manager
-    //make map spawn
-    //make map get child
-
-    /// <summary>
-    /// On Enabled, adds all child cubes and disc into _mapCubes dictionary
-    /// </summary>
-    private void OnEnable()
-    {
-        //line for testing, remove after
-        //MakeMap();
-        
-    }
+    [SerializeField] private int[] _landGoals;
+    [SerializeField] private bool[] _changeGoals;
 
     /// <summary>
     /// instantiates map from _mapPrefab
     /// </summary>
-    private void MakeMap()
+    public void MakeMap()
     {
         _currentMap = Instantiate(_mapPrefab, Vector3.zero, Quaternion.identity);
 
@@ -109,33 +98,38 @@ public class MapManager : Singleton<MapManager>
     /// Checks if the player has completed the map
     /// </summary>
     /// <returns>returns true if all spaces are at target</returns>
-    public bool HasCompleteMap()
+    public void CheckCompleteMap()
     {
+        bool complete = true;
         foreach (KeyValuePair<Vector3, GameObject> landable in _mapLandables)
         {
             if (landable.Value.tag == "Cube")
             {
                 if (!landable.Value.GetComponent<CubeScript>().IsGoalState())
                 {
-                    return false;
+                    complete = false;
                 }
             }
         }
-        return true;
+
+        if (complete)
+        {
+            ScoreManager.Instance.AddScore(1000 + (LevelManager.Instance.currentLevel * 250));
+            //call for next level
+        }
     }
 
     /// <summary>
     /// sets all cubes to the objective
     /// </summary>
-    /// <param name="landsToGoal">how many times does qbert have to land on cube</param>
-    /// <param name="changeableGoal">can cubes that reach the goal turn back</param>
-    public void SetMapCubes(int landsToGoal, bool changeableGoal)
+    public void SetMapCubesObjective()
     {
+        int curLevel = LevelManager.Instance.currentLevel;
         foreach (KeyValuePair<Vector3, GameObject> landable in _mapLandables)
         {
             if (landable.Value.tag == "Cube")
             {
-                landable.Value.GetComponent<CubeScript>().SetObjectiveRules(landsToGoal, changeableGoal);
+                landable.Value.GetComponent<CubeScript>().SetObjectiveRules(_landGoals[curLevel], _changeGoals[curLevel]);
             }
         }
     }

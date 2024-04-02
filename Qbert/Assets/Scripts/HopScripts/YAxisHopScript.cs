@@ -49,11 +49,7 @@ public class YAxisHopScript : BaseHopScript
                     {
                         playerSpawnScript.FirstJump();
                     }
-                }
-                if (MapManager.Instance.HasCompleteMap())
-                {
-                    ScoreManager.Instance.AddScore(1000 + (LevelManager.Instance.currentLevel * 250));
-                    //call for next level
+                    MapManager.Instance.CheckCompleteMap();
                 }
                 return;
             }

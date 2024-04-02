@@ -13,6 +13,8 @@ public class LiveMananger : Singleton<LiveMananger>
     [SerializeField] private int _startingLives = 3;
     private int _currentLives;
 
+    [SerializeField] private GameObject _qbertPrefab;
+
     /// <summary>
     /// sets current lives to starting lives
     /// </summary>
@@ -45,8 +47,19 @@ public class LiveMananger : Singleton<LiveMananger>
         else
         {
             //respawn
+            EnemyManager.Instance.StopSpawningEnemies();
+            EnemyManager.Instance.RemoveAllEnemies();
             UIManager.Instance.UpdateGameUI();
+            SpawnQbert();
         }
+    }
+
+    /// <summary>
+    /// instantiates a new qbert
+    /// </summary>
+    public void SpawnQbert()
+    {
+        Instantiate(_qbertPrefab);
     }
 
     /// <summary>

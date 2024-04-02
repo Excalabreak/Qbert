@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 492070905}
   - component: {fileID: 492070904}
   - component: {fileID: 492070902}
+  - component: {fileID: 492070907}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -179,6 +180,8 @@ MonoBehaviour:
     type: 3}
   _discPrefab: {fileID: 4065256256716658314, guid: e616c0e294ca9fd49a4e5b61e9d17ca8,
     type: 3}
+  _landGoals: 01000000020000000100000002000000
+  _changeGoals: 00000101
 --- !u!114 &492070900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +223,7 @@ MonoBehaviour:
   - {fileID: 5198604471477769420, guid: 6c743d45dc507334d8ae20dbd88733aa, type: 3}
   - {fileID: 8960656885529118710, guid: dc1d9d79f248b384ea21d84e83ae2619, type: 3}
   - {fileID: 311784356147506113, guid: fba004da71035d94699fee31d362eea5, type: 3}
-  _indexLimit: 02000000040000000600000006000000
+  _indexLimit: 01000000040000000600000006000000
   _spawnSpeed:
   - 3
   - 2
@@ -277,6 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingLives: 3
+  _qbertPrefab: {fileID: 6051762951614204151, guid: 554c55479534d93499bd2bc25689e6fe,
+    type: 3}
 --- !u!114 &492070906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +295,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _extraLivesAt: 10270000983a0000204e0000
+--- !u!114 &492070907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492070897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d0486178648ed43ad6bc07dea738b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &645747117
 GameObject:
   m_ObjectHideFlags: 0

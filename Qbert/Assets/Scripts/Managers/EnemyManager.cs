@@ -17,17 +17,8 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private float _freezeTime = 5f;
 
     private bool _spawning = false;
-    private int _currentLevel = 0;
     private bool _snakeIn = false;
     private bool _greenBallIn = false;
-
-    /// <summary>
-    /// here for testing, take out
-    /// </summary>
-    private void Start()
-    {
-        //StartSpawningEnemies();
-    }
 
     /// <summary>
     /// starts spawning enemy
@@ -119,9 +110,9 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         while (_spawning)
         {
-            yield return new WaitForSeconds(_spawnSpeed[_currentLevel]);
+            yield return new WaitForSeconds(_spawnSpeed[LevelManager.Instance.currentLevel]);
 
-            int spawnIndex = Random.Range(0, _indexLimit[_currentLevel]+1);
+            int spawnIndex = Random.Range(0, _indexLimit[LevelManager.Instance.currentLevel]+1);
 
             if (spawnIndex == 1)
             {

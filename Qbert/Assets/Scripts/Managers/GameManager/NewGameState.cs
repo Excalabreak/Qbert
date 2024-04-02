@@ -23,8 +23,9 @@ public class NewGameState : MonoBehaviour, IGameState
         LiveMananger.Instance.ResetLives();
         ScoreManager.Instance.ResetScore();
         LevelManager.Instance.ResetLevel();
-        //create new map
-        //create new qbert
-        //start enemy spawn
+        MapManager.Instance.MakeMap();
+        MapManager.Instance.SetMapCubesObjective();
+        LiveMananger.Instance.SpawnQbert();
+        EnemyManager.Instance.StartSpawningEnemies();
     }
 }
