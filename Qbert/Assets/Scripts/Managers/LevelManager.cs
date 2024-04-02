@@ -12,19 +12,38 @@ public class LevelManager : Singleton<LevelManager>
 {
     private int _currentLevel = 0;
     [SerializeField] private int _numOfLevel = 4;
+    private GameManager _gameManager;
 
+    /// <summary>
+    /// gets game manager
+    /// </summary>
+    private void OnEnable()
+    {
+        _gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
+    }
+
+    /// <summary>
+    /// sets up next level or calls to win state
+    /// </summary>
     public void NextLevel()
     {
         _currentLevel++;
         if (_currentLevel >= _numOfLevel)
         {
-            //win
+            _gameManager.OnWin();
         }
         else
         {
-            //reset map
-            //start next level
+            EnemyManager.Instance.StopSpawningEnemies();
+            EnemyManager.Instance.RemoveAllEnemies();
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            MapManager.Instance.DestoyMap();
+
+            MapManager.Instance.MakeMap();
+            MapManager.Instance.SetMapCubesObjective();
+            EnemyManager.Instance.StartSpawningEnemies();
             UIManager.Instance.UpdateGameUI();
+            LiveMananger.Instance.SpawnQbert();
         }
     }
 

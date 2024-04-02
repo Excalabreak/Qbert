@@ -16,9 +16,15 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private float[] _spawnSpeed;
     [SerializeField] private float _freezeTime = 5f;
 
+    private IEnumerator spawnCoroutine;
     private bool _spawning = false;
     private bool _snakeIn = false;
     private bool _greenBallIn = false;
+
+    private void OnEnable()
+    {
+        spawnCoroutine = Spawn();
+    }
 
     /// <summary>
     /// starts spawning enemy
@@ -26,7 +32,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public void StartSpawningEnemies()
     {
         _spawning = true;
-        StartCoroutine(Spawn());
+        StartCoroutine(spawnCoroutine);
     }
 
     /// <summary>
@@ -35,7 +41,7 @@ public class EnemyManager : Singleton<EnemyManager>
     public void StopSpawningEnemies()
     {
         _spawning = false;
-        StopCoroutine(Spawn());
+        StopCoroutine(spawnCoroutine);
     }
 
     /// <summary>

@@ -17,7 +17,6 @@ public class XAxisHopScript : BaseHopScript
     /// </summary>
     public override void HandleHop()
     {
-        Debug.Log(_endPos);
         if (_isHandlingJump && !_frozen)
         {
             Vector3 movePos = transform.position + (_direction * _speed * Time.deltaTime);

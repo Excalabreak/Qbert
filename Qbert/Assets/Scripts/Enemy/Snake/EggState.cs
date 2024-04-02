@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [04/01/2024]
+ * [Handles movement for egg state]
+ */
+
 public class EggState : MonoBehaviour, ISnakeState
 {
     private SnakeMoveScript _snakeMoveScript;

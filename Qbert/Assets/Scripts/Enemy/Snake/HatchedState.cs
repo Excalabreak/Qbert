@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [04/01/2024]
+ * [Handles movement for hatched state]
+ */
+
 public class HatchedState : MonoBehaviour, ISnakeState
 {
     private SnakeMoveScript _snakeMoveScript;
@@ -48,7 +54,7 @@ public class HatchedState : MonoBehaviour, ISnakeState
     private void JumpTwoardsPlayer()
     {
         Vector3 playerLoc = MapManager.Instance.playerLastLocation;
-        if (playerLoc.y > transform.position.y)
+        if (playerLoc.y > transform.position.y || transform.position.y <= -5)
         {
             if (playerLoc.x - playerLoc.z > transform.position.x - transform.position.z)
             {

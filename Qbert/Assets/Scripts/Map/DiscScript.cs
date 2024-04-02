@@ -46,6 +46,7 @@ public class DiscScript : MonoBehaviour
                 if (_playerGameObject.transform.parent != transform)
                 {
                     _playerGameObject.transform.parent = transform;
+                    _playerGameObject.GetComponent<Collider>().enabled = false;
                 }
 
                 Vector3 currentPos = transform.position + (_direction * _speed * Time.deltaTime);
@@ -62,6 +63,7 @@ public class DiscScript : MonoBehaviour
 
             if (_atEndPos)
             {
+                _playerGameObject.GetComponent<Collider>().enabled = true;
                 _playerGameObject.transform.parent = null;
                 Vector3 returnPos = _playerGameObject.GetComponent<PlayerSpawnScript>().spawnLoc;
                 _playerGameObject.transform.position = returnPos;

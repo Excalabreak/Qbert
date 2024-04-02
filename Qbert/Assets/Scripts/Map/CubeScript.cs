@@ -45,7 +45,14 @@ public class CubeScript : MonoBehaviour
     private void SetTopState(int state)
     {
         _currentTopState = state;
-        _topRenderer.material = _topMats[state];
+        if (_currentTopState == _goalTopState)
+        {
+            _topRenderer.material = _topMats[_topMats.Length -1];
+        }
+        else
+        {
+            _topRenderer.material = _topMats[state];
+        }
     }
 
     /// <summary>

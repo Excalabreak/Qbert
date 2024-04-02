@@ -5,7 +5,7 @@ using UnityEngine;
 /*
  * Author: [Lam, Justin]
  * Last Updated: [04/01/2024]
- * []
+ * [Handles starting a new game]
  */
 
 public class NewGameState : MonoBehaviour, IGameState

@@ -81,6 +81,15 @@ public class MapManager : Singleton<MapManager>
     }
 
     /// <summary>
+    /// Destroys Map
+    /// </summary>
+    public void DestoyMap()
+    {
+        Destroy(_currentMap);
+        _mapLandables.Clear();
+    }
+
+    /// <summary>
     /// destroys and removes the map landable by the SPAWNED position key
     /// </summary>
     /// <param name="landable">KEY of landable</param>
@@ -115,7 +124,14 @@ public class MapManager : Singleton<MapManager>
         if (complete)
         {
             ScoreManager.Instance.AddScore(1000 + (LevelManager.Instance.currentLevel * 250));
-            //call for next level
+            foreach (KeyValuePair<Vector3, GameObject> landable in _mapLandables)
+            {
+                if (landable.Value.tag == "Disc")
+                {
+                    ScoreManager.Instance.AddScore(50);
+                }
+            }
+            LevelManager.Instance.NextLevel();
         }
     }
 

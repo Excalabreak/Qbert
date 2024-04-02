@@ -14,6 +14,15 @@ public class LiveMananger : Singleton<LiveMananger>
     private int _currentLives;
 
     [SerializeField] private GameObject _qbertPrefab;
+    private GameManager _gameManager;
+
+    /// <summary>
+    /// gets game manager
+    /// </summary>
+    private void OnEnable()
+    {
+        _gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
+    }
 
     /// <summary>
     /// sets current lives to starting lives
@@ -42,7 +51,7 @@ public class LiveMananger : Singleton<LiveMananger>
         _currentLives--;
         if (_currentLives <= 0)
         {
-            //trigger game over
+            _gameManager.OnGameOver();
         }
         else
         {
@@ -51,6 +60,7 @@ public class LiveMananger : Singleton<LiveMananger>
             EnemyManager.Instance.RemoveAllEnemies();
             UIManager.Instance.UpdateGameUI();
             SpawnQbert();
+            EnemyManager.Instance.StartSpawningEnemies();
         }
     }
 
