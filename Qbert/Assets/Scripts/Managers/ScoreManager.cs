@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [04/01/2024]
+ * [manages score]
+ */
+
 public class ScoreManager : Singleton<ScoreManager>
 {
     private int _currentScore = 0;

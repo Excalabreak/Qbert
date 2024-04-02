@@ -8,6 +8,7 @@ TagManager:
   - Disc
   - Enemy
   - SamSlick
+  - GreenBall
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [04/01/2024]
+ * [Handles what the level is]
+ */
+
 public class LevelManager : Singleton<LevelManager>
 {
     private int _currentLevel = 0;

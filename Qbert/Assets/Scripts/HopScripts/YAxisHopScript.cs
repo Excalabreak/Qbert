@@ -52,6 +52,7 @@ public class YAxisHopScript : BaseHopScript
                 }
                 if (MapManager.Instance.HasCompleteMap())
                 {
+                    ScoreManager.Instance.AddScore(1000 + (LevelManager.Instance.currentLevel * 250));
                     //call for next level
                 }
                 return;

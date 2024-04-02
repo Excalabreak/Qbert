@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Lam, Justin]
+ * Last Updated: [04/01/2024]
+ * [manages player lives]
+ */
+
 public class LiveMananger : Singleton<LiveMananger>
 {
     [SerializeField] private int _startingLives = 3;
