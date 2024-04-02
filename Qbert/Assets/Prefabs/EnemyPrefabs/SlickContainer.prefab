@@ -129,7 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7434c0a7f04b442b5bcd38ff2a7055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _depthLimits: {x: -19, y: -19, z: -19}
+  _limitValue: -19
+  _entityIsLessToDespawn: 1
+  _axis: 0
 --- !u!114 &-5799381225513718912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f39074f26468498f37df4bdd0692b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points: 100
+  _points: 300
+  _isBall: 0
 --- !u!1001 &6364626615949601877
 PrefabInstance:
   m_ObjectHideFlags: 0

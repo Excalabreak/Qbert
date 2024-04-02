@@ -18,7 +18,7 @@ public class BaseGreenDeathScript : BaseDeathScript
         {
             EnemyManager.Instance.FreezeAllEnemies();
         }
-        //add points
+        ScoreManager.Instance.AddScore(_points);
         EnemyManager.Instance.RemoveEnemy(gameObject);
     }
 

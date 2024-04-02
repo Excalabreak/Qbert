@@ -61,6 +61,7 @@ public class CubeScript : MonoBehaviour
         {
             SetTopState(_currentTopState + 1);
         }
+        ScoreManager.Instance.AddScore(25);
     }
 
     /// <summary>

@@ -15,7 +15,7 @@ public class SnakeDeathScript : BaseDeathScript
     /// </summary>
     public override void OnFallDeath()
     {
-        Debug.Log("+500 points");
+        ScoreManager.Instance.AddScore(500);
         base.OnFallDeath();
     }
 }
