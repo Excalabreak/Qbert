@@ -13,6 +13,7 @@ public class LiveMananger : Singleton<LiveMananger>
     public void ResetLives()
     {
         _currentLives = _startingLives;
+        UIManager.Instance.UpdateGameUI();
     }
 
     /// <summary>
@@ -22,6 +23,7 @@ public class LiveMananger : Singleton<LiveMananger>
     public void AddLives(int numOfLives)
     {
         _currentLives += numOfLives;
+        UIManager.Instance.UpdateGameUI();
     }
 
     /// <summary>
@@ -37,6 +39,15 @@ public class LiveMananger : Singleton<LiveMananger>
         else
         {
             //respawn
+            UIManager.Instance.UpdateGameUI();
         }
+    }
+
+    /// <summary>
+    /// property to get current lives
+    /// </summary>
+    public int currentLives
+    {
+        get { return _currentLives; }
     }
 }

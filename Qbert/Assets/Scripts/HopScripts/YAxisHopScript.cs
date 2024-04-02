@@ -50,6 +50,10 @@ public class YAxisHopScript : BaseHopScript
                         playerSpawnScript.FirstJump();
                     }
                 }
+                if (MapManager.Instance.HasCompleteMap())
+                {
+                    //call for next level
+                }
                 return;
             }
 

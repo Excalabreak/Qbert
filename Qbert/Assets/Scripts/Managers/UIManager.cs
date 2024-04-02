@@ -87,6 +87,9 @@ public class UIManager : Singleton<UIManager>
         _quitButton.SetActive(true);
     }
 
+    /// <summary>
+    /// shows win screen
+    /// </summary>
     public void ShowWinUI()
     {
         HideAllUI();
@@ -102,5 +105,12 @@ public class UIManager : Singleton<UIManager>
         _playText.text = "Replay";
 
         _quitButton.SetActive(true);
+    }
+
+    public void UpdateGameUI()
+    {
+        _livesText.text = "Lives: " + LiveMananger.Instance.currentLives;
+        _scoreText.text = "Score: " + ScoreManager.Instance.currentScore;
+        _levelText.text = "Level: " + LevelManager.Instance.currentLevel + 1;
     }
 }
