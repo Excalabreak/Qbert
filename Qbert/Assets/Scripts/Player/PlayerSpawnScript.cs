@@ -22,6 +22,7 @@ public class PlayerSpawnScript : MonoBehaviour
     private void Awake()
     {
         _justSpawned = true;
+        transform.position = _spawnLoc;
     }
 
     /// <summary>

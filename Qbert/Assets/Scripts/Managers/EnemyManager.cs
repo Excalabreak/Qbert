@@ -21,9 +21,12 @@ public class EnemyManager : Singleton<EnemyManager>
     private bool _snakeIn = false;
     private bool _greenBallIn = false;
 
+    /// <summary>
+    /// here for testing, take out
+    /// </summary>
     private void Start()
     {
-        StartSpawningEnemies();
+        //StartSpawningEnemies();
     }
 
     /// <summary>

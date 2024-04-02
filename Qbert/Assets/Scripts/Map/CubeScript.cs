@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/19/2024]
+ * Last Updated: [04/01/2024]
  * [Script for each tile]
  */
 
@@ -33,9 +33,9 @@ public class CubeScript : MonoBehaviour
         {
             _goalTopState = landsToGoal;
         }
-        Debug.Log("Not valid goal");
 
         _canChangeGoalState = changeableGoal;
+        ResetTopState();
     }
 
     /// <summary>

@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private IGameState _titleState, _playState, _deathState, _gameOverState, _winState;
+    private IGameState _titleState;
 
     private GameStateContext _gameStateContext;
 
@@ -19,9 +19,17 @@ public class GameManager : MonoBehaviour
         _gameStateContext = new GameStateContext(this);
 
         _titleState = gameObject.GetComponent<TitleState>();
-        _playState = gameObject.GetComponent<PlayState>();
-        _deathState = gameObject.GetComponent<DeathState>();
-        _gameOverState = gameObject.GetComponent<GameOverState>();
-        _winState = gameObject.GetComponent<WinState>();
+
+        _gameStateContext.Transition(_titleState);
+    }
+
+    public void StartGame()
+    {
+
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

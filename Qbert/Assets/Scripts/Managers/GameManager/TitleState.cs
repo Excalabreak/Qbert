@@ -14,6 +14,11 @@ public class TitleState : MonoBehaviour, IGameState
 
     public void Handle(GameManager gameManager)
     {
+        if (!_gameManager)
+        {
+            _gameManager = gameManager;
+        }
 
+        UIManager.Instance.ShowTitleScreen();
     }
 }

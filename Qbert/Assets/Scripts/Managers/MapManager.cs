@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [03/28/2024]
+ * Last Updated: [04/01/2024]
  * [Singleton that holds information about the map and cubes]
  */
 
@@ -27,7 +27,7 @@ public class MapManager : Singleton<MapManager>
     private void OnEnable()
     {
         //line for testing, remove after
-        MakeMap();
+        //MakeMap();
         
     }
 
@@ -82,6 +82,10 @@ public class MapManager : Singleton<MapManager>
         
     }
 
+    /// <summary>
+    /// sets player's last location
+    /// </summary>
+    /// <param name="loc"></param>
     public void UpdatePlayerLastLocation(Vector3 loc)
     {
         _playerLastLocation = loc;
@@ -96,9 +100,43 @@ public class MapManager : Singleton<MapManager>
         GameObject temp;
         if (_mapLandables.TryGetValue(landable, out temp))
         {
-            Debug.Log(temp);
             Destroy(temp);
             _mapLandables.Remove(landable);
+        }
+    }
+
+    /// <summary>
+    /// Checks if the player has completed the map
+    /// </summary>
+    /// <returns>returns true if all spaces are at target</returns>
+    public bool HasCompleteMap()
+    {
+        foreach (KeyValuePair<Vector3, GameObject> landable in _mapLandables)
+        {
+            if (landable.Value.tag == "Cube")
+            {
+                if (!landable.Value.GetComponent<CubeScript>().IsGoalState())
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// sets all cubes to the objective
+    /// </summary>
+    /// <param name="landsToGoal">how many times does qbert have to land on cube</param>
+    /// <param name="changeableGoal">can cubes that reach the goal turn back</param>
+    public void SetMapCubes(int landsToGoal, bool changeableGoal)
+    {
+        foreach (KeyValuePair<Vector3, GameObject> landable in _mapLandables)
+        {
+            if (landable.Value.tag == "Cube")
+            {
+                landable.Value.GetComponent<CubeScript>().SetObjectiveRules(landsToGoal, changeableGoal);
+            }
         }
     }
 
@@ -112,11 +150,19 @@ public class MapManager : Singleton<MapManager>
         return _mapLandables.ContainsKey(space);
     }
 
+    /// <summary>
+    /// checks if space is a cube
+    /// </summary>
+    /// <param name="space"></param>
+    /// <returns></returns>
     public bool CheckForCube(Vector3 space)
     {
         return (_mapLandables.ContainsKey(space) && _mapLandables[space].tag == "Cube");
     }
 
+    /// <summary>
+    /// property to get player's last location
+    /// </summary>
     public Vector3 playerLastLocation
     {
         get { return _playerLastLocation; }
